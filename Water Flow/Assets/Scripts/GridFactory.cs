@@ -43,7 +43,7 @@ public class GridFactory : MonoBehaviour
         int coloumn)
     {
         InitGridCoordinates(g, origin, row, coloumn);
-        InitGridScale(g);
+        //InitGridScale(g);
     }
 
     private void InitGridCoordinates(
@@ -54,8 +54,14 @@ public class GridFactory : MonoBehaviour
     {
         Vector3 pos = origin;
 
-        pos.x += coloumn * _sqrt3 * _edgeSize;
-        pos.z += row * 2 * _edgeSize;
+        float width = _sqrt3 * _edgeSize;
+        float height = 2 * _edgeSize;
+
+        float initPosXOffset = (row % 2) * (width / 2.0f);
+        float initPosYOffset = (height / 2.0f);
+
+        pos.x += initPosXOffset + coloumn * width;
+        pos.z += row * height;
 
         g.transform.position = pos;
 

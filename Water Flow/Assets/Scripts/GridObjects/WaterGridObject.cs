@@ -20,13 +20,13 @@ public class WaterGridObject : GridObject
 
     private void RegisterToNeighborList()
     {
-        ParentGrid.NeighborGridList.ForEach(
-            val => val)
+        //ParentGrid.NeighborGridList.ForEach(
+            //val => val)
     }
 
     private void RegisterToNeighbor(Grid g)
     {
-        g.OnGridObjectSet
+        //g.OnGridObjectSet
     }
 
     private void UnregisterFromNeigborList()
