@@ -31,6 +31,7 @@ public class Grid : MonoBehaviour
     }
 
     [SerializeField]
+    [HideInInspector]
     private List<Grid> _neighborGridList;
     public List<Grid> NeighborGridList
     {
@@ -40,14 +41,24 @@ public class Grid : MonoBehaviour
         }
     }
 
-    private Vector3 _initScale;
+    public bool IsActiveGrid { get; private set; }
 
     #region Events
+    public Action<bool> OnGridSetActive { get; set; }
+
     public Action OnGridObjectSet { get; set; }
-    public Action OnGridObjectRemoved { get; set; }
 
     public Action OnLevelUpdated { get; set; }
     #endregion
+
+    public void SetGridActive(bool isActive)
+    {
+        gameObject.SetActive(isActive);
+
+        IsActiveGrid = isActive;
+
+        OnGridSetActive?.Invoke(IsActiveGrid);
+    }
 
     public void InitGrid(Board b, int x, int y)
     {
@@ -57,8 +68,6 @@ public class Grid : MonoBehaviour
         Y = y;
 
         _level = 1;
-
-        _initScale = transform.localScale;
     }
 
     public void PostInitGrid()
@@ -75,43 +84,26 @@ public class Grid : MonoBehaviour
     {
         _level += level;
 
-        Vector3 newScale = transform.localScale;
-
-        newScale.y = _initScale.y * Level;
-
-        transform.localScale = newScale;
-    }
-
-    public void RemoveGridObject()
-    {
-        Action onDestroyedDel = delegate
-        {
-            OnGridObjectRemoved?.Invoke();
-        };
-
-       DestroyCurGridObject(onDestroyedDel);
+        OnLevelUpdated?.Invoke();
     }
 
     public void SetGridObject(GridObject.EType type)
     {
-        Action onDestroyedDel = delegate
-        {
-            GridObject gridObj = GridObjectFactory.Instance
+        DestroyCurGridObject();
+
+        GridObject gridObj = GridObjectFactory.Instance
             .CreateGridObjectInstance(type);
 
-            _gridObject = gridObj;
+        _gridObject = gridObj;
 
-            gridObj.SetParentGrid(this);
+        gridObj.SetParentGrid(this);
 
-            OnGridObjectSet?.Invoke();
-        };
-
-        DestroyCurGridObject(onDestroyedDel);
+        OnGridObjectSet?.Invoke();
     }
 
-    private void DestroyCurGridObject(Action onDestroyedCallback)
+    private void DestroyCurGridObject()
     {
-        GridObject.DestroyGridObject(onDestroyedCallback);
+        GridObject.DestroyGridObject();
 
         _gridObject = null;
     }

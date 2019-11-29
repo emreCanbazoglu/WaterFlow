@@ -21,43 +21,23 @@ public class GridObject : MonoBehaviour
         }
     }
 
+    #region Events
+    public Action OnParentSet { get; set; }
+    #endregion
+
     public Grid ParentGrid { get; private set; }
 
     public void SetParentGrid(Grid grid)
     {
-        ParentGridSetting();
-
         ParentGrid = grid;
 
         transform.SetParent(ParentGrid.transform);
 
-        ParentGridSet();
+        OnParentSet?.Invoke();
     }
 
-    protected virtual void ParentGridSetting()
+    public void DestroyGridObject()
     {
-
-    }
-
-    protected virtual void ParentGridSet()
-    {
-
-    }
-
-    public void DestroyGridObject(Action onDestroyedCallback)
-    {
-        Action onCompletedDel = delegate ()
-        {
-            Destroy(gameObject);
-
-            onDestroyedCallback?.Invoke();
-        };
-
-        GridObjectDestroying(onCompletedDel);
-    }
-
-    protected virtual void GridObjectDestroying(Action onCompletedCallback)
-    {
-        onCompletedCallback?.Invoke();
+        Destroy(gameObject);
     }
 }

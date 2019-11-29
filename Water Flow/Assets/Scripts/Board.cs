@@ -35,6 +35,7 @@ public class Board : MonoBehaviour
     }
 
     [SerializeField]
+    [HideInInspector]
     private Grid[] _gridArr;
     public Grid[] GridArr
     {
@@ -44,15 +45,25 @@ public class Board : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    [HideInInspector]
+    private GameObject[] _rowCarrierArr;
+
     public void CreateBoard()
     {
         if (_gridArr != null)
             DestroyBoard();
 
+        _rowCarrierArr = new GameObject[RowCount];
+
         _gridArr = new Grid[ColoumnCount * RowCount];
 
         for(int i = 0; i < RowCount; i++)
         {
+            _rowCarrierArr[i] = new GameObject("Row_" + i.ToString());
+
+            _rowCarrierArr[i].transform.SetParent(transform);
+
             for(int j = 0; j < ColoumnCount; j++)
             {
                 _gridArr[GetGridIndex(j, i)] = GridFactory.Instance.CreateGridInstance(
@@ -61,10 +72,9 @@ public class Board : MonoBehaviour
 
                 GetGrid(j, i).InitGrid(this, j, i);
 
-                GetGrid(j, i).transform.SetParent(transform);
+                GetGrid(j, i).transform.SetParent(_rowCarrierArr[i].transform);
             }
         }
-
 
         foreach (Grid g in GridArr)
             g.PostInitGrid();
@@ -72,6 +82,11 @@ public class Board : MonoBehaviour
 
     public void DestroyBoard()
     {
+        foreach(GameObject g in _rowCarrierArr)
+        {
+            DestroyImmediate(g);
+        }
+
         foreach(Grid g in _gridArr)
         {
             if (g == null)
