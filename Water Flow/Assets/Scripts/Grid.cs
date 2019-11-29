@@ -20,9 +20,25 @@ public class Grid : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private GridObject _gridObject;
+    public GridObject GridObject
+    {
+        get
+        {
+            return _gridObject;
+        }
+    }
 
-    public GridObject GridObject { get; private set; }
-    public List<Grid> NeighborGridList { get; private set; }
+    [SerializeField]
+    private List<Grid> _neighborGridList;
+    public List<Grid> NeighborGridList
+    {
+        get
+        {
+            return _neighborGridList;
+        }
+    }
 
     private Vector3 _initScale;
 
@@ -52,7 +68,7 @@ public class Grid : MonoBehaviour
 
     private void InitNeighborGrids()
     {
-        NeighborGridList = Board.GetNeighborGrids(this);
+        _neighborGridList = Board.GetNeighborGrids(this);
     }
 
     public void IncreaseLevel(int level)
@@ -83,7 +99,7 @@ public class Grid : MonoBehaviour
             GridObject gridObj = GridObjectFactory.Instance
             .CreateGridObjectInstance(type);
 
-            GridObject = gridObj;
+            _gridObject = gridObj;
 
             gridObj.SetParentGrid(this);
 
@@ -97,6 +113,6 @@ public class Grid : MonoBehaviour
     {
         GridObject.DestroyGridObject(onDestroyedCallback);
 
-        GridObject = null;
+        _gridObject = null;
     }
 }

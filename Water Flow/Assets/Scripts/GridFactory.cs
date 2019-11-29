@@ -57,11 +57,11 @@ public class GridFactory : MonoBehaviour
         float width = _sqrt3 * _edgeSize;
         float height = 2 * _edgeSize;
 
-        float initPosXOffset = (row % 2) * (width / 2.0f);
-        float initPosYOffset = (height / 2.0f);
+        float initPosXOffset = ((row + 1) % 2) * (width / 2.0f);
+        float initPosZOffset = (height / 2.0f);
 
         pos.x += initPosXOffset + coloumn * width;
-        pos.z += row * height;
+        pos.z -= initPosZOffset + row * height * 0.75f;
 
         g.transform.position = pos;
 

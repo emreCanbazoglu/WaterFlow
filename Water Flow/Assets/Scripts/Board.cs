@@ -35,8 +35,8 @@ public class Board : MonoBehaviour
     }
 
     [SerializeField]
-    private Grid[,] _gridArr;
-    public Grid[,] GridArr
+    private Grid[] _gridArr;
+    public Grid[] GridArr
     {
         get
         {
@@ -49,21 +49,22 @@ public class Board : MonoBehaviour
         if (_gridArr != null)
             DestroyBoard();
 
-        _gridArr = new Grid[ColoumnCount, RowCount];
+        _gridArr = new Grid[ColoumnCount * RowCount];
 
         for(int i = 0; i < RowCount; i++)
         {
             for(int j = 0; j < ColoumnCount; j++)
             {
-                _gridArr[j, i] = GridFactory.Instance.CreateGridInstance(
+                _gridArr[GetGridIndex(j, i)] = GridFactory.Instance.CreateGridInstance(
                     _origin,
                     i, j);
 
-                _gridArr[j, i].InitGrid(this, j, i);
+                GetGrid(j, i).InitGrid(this, j, i);
 
-                _gridArr[j, i].transform.SetParent(transform);
+                GetGrid(j, i).transform.SetParent(transform);
             }
         }
+
 
         foreach (Grid g in GridArr)
             g.PostInitGrid();
@@ -87,26 +88,104 @@ public class Board : MonoBehaviour
         int x = grid.X;
         int y = grid.Y;
 
-        for(int i = -1; i <= 1; i++)
+        bool isRowOdd = false;
+
+        if (y % 2 == 1)
+            isRowOdd = true;
+
+        int tempX;
+        int tempY;
+
+        if (isRowOdd)
         {
-            for(int j = -1; j <= 1; j++)
+            tempX = x - 1;
+
+            for (int i = -1; i <= 1; i++)
             {
-                if (i == 0 && j == 0)
+                tempY = y + i;
+
+                if (!IsValidGrid(tempX, tempY))
                     continue;
 
-                int tempX = x + i;
-                int tempY = y + j;
-
-                if (tempX == ColoumnCount)
-                    continue;
-
-                if (tempY == RowCount)
-                    continue;
-
-                neigborList.Add(GridArr[tempX, tempY]);
+                neigborList.Add(GetGrid(tempX, tempY));
             }
+
+            tempX = x;
+
+            for (int i = -1; i <= 1; i++)
+            {
+                tempY = y + i;
+
+                if (!IsValidGrid(tempX, tempY)
+                    || tempY == y)
+                    continue;
+
+                neigborList.Add(GetGrid(tempX, tempY));
+            }
+
+            tempX = x + 1;
+            tempY = y;
+
+            if (IsValidGrid(tempX, y))
+                neigborList.Add(GetGrid(tempX, tempY));
+        }
+        else
+        {
+            tempX = x + 1;
+
+            for (int i = -1; i <= 1; i++)
+            {
+                tempY = y + i;
+
+                if (!IsValidGrid(tempX, tempY))
+                    continue;
+
+                neigborList.Add(GetGrid(tempX, tempY));
+            }
+
+            tempX = x;
+
+            for (int i = -1; i <= 1; i++)
+            {
+                tempY = y + i;
+
+                if (!IsValidGrid(tempX, tempY)
+                    || tempY == y)
+                    continue;
+
+                neigborList.Add(GetGrid(tempX, tempY));
+            }
+
+            tempX = x - 1;
+            tempY = y;
+
+            if (IsValidGrid(tempX, y))
+                neigborList.Add(GetGrid(tempX, tempY));
         }
 
         return neigborList;
+    }
+
+    private bool IsValidGrid(int coloumn, int row)
+    {
+        if (row < 0
+            || row >= RowCount)
+            return false;
+
+        if (coloumn < 0
+            || coloumn >= ColoumnCount)
+            return false;
+
+        return true;
+    }
+
+    public Grid GetGrid(int coloumn, int row)
+    {
+        return _gridArr[GetGridIndex(coloumn, row)];
+    }
+
+    private int GetGridIndex(int coloumn, int row)
+    {
+        return row * ColoumnCount + coloumn;
     }
 }
