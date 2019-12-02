@@ -103,10 +103,7 @@ public class Board : MonoBehaviour
         int x = grid.X;
         int y = grid.Y;
 
-        bool isRowOdd = false;
-
-        if (y % 2 == 1)
-            isRowOdd = true;
+        bool isRowOdd = y % 2 == 1;
 
         int tempX;
         int tempY;

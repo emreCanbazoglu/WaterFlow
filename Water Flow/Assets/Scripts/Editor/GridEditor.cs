@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Grid))]
+[CustomEditor(typeof(GridLevelController))]
 public class GridEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        Grid myScript = (Grid)target;
+        GridLevelController myScript = (GridLevelController)target;
 
         if (GUILayout.Button("Increase Height Level"))
         {
-            myScript.IncreaseLevel(1);
+            myScript.TryIncreaseLevel(1);
         }
         if (GUILayout.Button("Decrease Height Level"))
         {
-            myScript.IncreaseLevel(-1);
+            myScript.TryIncreaseLevel(-1);
         }
     }
 }

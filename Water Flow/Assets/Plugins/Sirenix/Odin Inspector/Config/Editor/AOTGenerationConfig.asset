@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: AOTGenerationConfig
+  m_EditorClassIdentifier: 
+  automateBeforeBuilds: 1
+  deleteDllAfterBuilds: 1
+  automateForPlatforms: 0900000014000000
+  lastScan: 637070172332667230
+  supportSerializedTypes:
+  - TypeName: ArmyUnitAttackSpeedBoosterStatus, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ArmyUnitDiscoverySaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ArmyUnitDPSInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: AutoTapBoosterStatus, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BasicBoxArmyUnitCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BasicEnemyBoxCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BoardSaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BoardStateInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Boolean, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: BoosterSaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: CaptainSaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[EArmyUnit, Assembly-CSharp],[EArmyUnitCategory,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[EBoardState, Assembly-CSharp],[System.Collections.Generic.List`1[[MinionSlot,
+      Assembly-CSharp]], mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[EBoardState, Assembly-CSharp],[System.Collections.Generic.List`1[[SeaObjectSlot,
+      Assembly-CSharp]], mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Double, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: DPS, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: EArmyUnit, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: EArmyUnitCategory, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: EBoardState, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.EqualityComparer`1+DefaultComparer[[EArmyUnit,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.EqualityComparer`1+DefaultComparer[[EBoardState,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Single, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: GameStateSaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Int32, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: IntervalBasedBoosterOfferer, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[ArmyUnitDPSInfo, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[BoardEntityInfoBase, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[BoardStateInfo, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[BoosterStatusBase, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[DPS, Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[MergeInfo, Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[MinionSlot, Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[SeaObjectSlot, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[StorePurchaseInfo, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Int64, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MergeInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MergeTownDPSCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MergeTownGridUnlockFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MinionCombatIntervalBasedObjectSpawner, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MinionSlot, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMCaptainTapDamageCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMCaptainUpgradePriceCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMCashOutFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMEnemyGoldWorthCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMFloatingChestGoldWorthCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMMonsterHealthCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: MMStorePriceCalculationFormula, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: SeaObjectSlot, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: StorePurchaseInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: StoreSaveInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UserSaveData, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
